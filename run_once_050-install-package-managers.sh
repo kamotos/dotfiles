@@ -16,6 +16,9 @@ curl https://sh.rustup.rs -sSf | sh -s -- -y
 if ! type sudo
 then
     mkdir -p -m 0755 /nix && chown root /nix
+    mkdir -p /etc/nix
+    export USER=root
+    echo "build-users-group =" > /etc/nix/nix.conf
 fi
 
 sh <(curl -L https://nixos.org/nix/install)
@@ -28,4 +31,11 @@ VUNDLE_PATH=~/.vim/bundle/Vundle.vim
 if ! stat $VUNDLE_PATH > /dev/null;
 then
   git clone https://github.com/VundleVim/Vundle.vim.git $VUNDLE_PATH
+fi
+
+# zsh
+if ! stat ~/.zshrc > /dev/null;
+then
+  export KEEP_ZSHRC=yes
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi

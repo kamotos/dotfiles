@@ -1,6 +1,12 @@
 #!/bin/sh
+
+source "$HOME/.cargo/env"
+
 cargo install \
   bandwhich \
   broot \
   du-dust \
-  sd
+  nethoscope \
+  sd \
+  tokei \
+  watchexec
