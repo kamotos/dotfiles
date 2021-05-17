@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/bin/bash
+
+set -x
 
 #fonts
 TTF_FONTS_FOLDER=~/.local/share/fonts/ttf/
@@ -18,13 +20,14 @@ curl -ksSL https://raw.github.com/ymattw/ydiff/master/ydiff.py > $BIN_FOLDER/ydi
 chmod +x $BIN_FOLDER/ydiff
 
 # shell prompt
-sh -c "$(curl -fsSL https://starship.rs/install.sh)"
+curl https://starship.rs/install.sh -sSf | sh -s -- -y
 
 ## Install with nix-env
 . "$HOME/.nix-profile/etc/profile.d/nix.sh"
 nix-env -i bat
 nix-env -i bottom # btm
 nix-env -i direnv
+nix-env -i du-dust
 nix-env -i exa # ls alternative
 nix-env -i fd # https://github.com/sharkdp/fd
 nix-env -i neofetch

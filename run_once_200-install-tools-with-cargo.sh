@@ -1,12 +1,12 @@
 #!/bin/sh
 
-source "$HOME/.cargo/env"
+. "$HOME/.cargo/env"
 
 cargo install \
   bandwhich \
   broot \
-  du-dust \
-  nethoscope \
   sd \
   tokei \
-  watchexec
+  watchexec-cli
+#  du-dust \
+#  nethoscope \
