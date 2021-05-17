@@ -13,6 +13,8 @@ mkdir -p $BIN_FOLDER
 curl -ksSL https://raw.github.com/ymattw/ydiff/master/ydiff.py > $BIN_FOLDER/ydiff
 chmod +x $BIN_FOLDER/ydiff
 
+# shell prompt
+sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 
 ## Install with nix-env
 . "$HOME/.nix-profile/etc/profile.d/nix.sh"
