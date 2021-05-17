@@ -19,3 +19,6 @@ then
 fi
 
 sh <(curl -L https://nixos.org/nix/install)
+
+# nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
