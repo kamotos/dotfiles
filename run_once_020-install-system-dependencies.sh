@@ -1,13 +1,12 @@
 #!/bin/sh
 
-OS_DEPENDENCIES="build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl git python3-dev:"
+OS_DEPENDENCIES="build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl git python3-dev flameshot pactl xbacklight"
 
-
-# sudo isn't necessary available in docker images
+SUDO=""
 if type sudo
 then
-    sudo apt install -y $OS_DEPENDENCIES
-    exit
+    SUDO="sudo"
 fi
 
-apt install -y $OS_DEPENDENCIES
+# sudo isn't necessary available in a docker image build
+$SUDO apt install -y $OS_DEPENDENCIES

@@ -15,16 +15,19 @@ chmod +x $BIN_FOLDER/ydiff
 
 
 ## Install with nix-env
-nix-env -i direnv 
+. "$HOME/.nix-profile/etc/profile.d/nix.sh"
+nix-env -i direnv
+nix-env -i fd # https://github.com/sharkdp/fd
+nix-env -i bottom # btm
+nix-env -i procs # ps
+nix-env -i exa # ls alternative
 
-# https://github.com/sharkdp/fd
-nix-env -i fd 
+# dep packages
+SUDO=""
+if type sudo
+then
+    SUDO="sudo"
+fi
 
-# btm
-nix-env -i bottom
-
-# ps
-nix-env -i procs
-
-# ls alternative
-nix-env -i exa
+curl -o /tmp/rescuetime_current_amd64.deb https://www.rescuetime.com/installers/rescuetime_current_amd64.deb
+$SUDO dpkg -i /tmp/rescuetime_current_amd64.deb
