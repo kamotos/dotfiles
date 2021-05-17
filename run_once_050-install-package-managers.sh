@@ -2,10 +2,10 @@
 
 # Package managers
 # rust - cargo
-curl https://sh.rustup.rs -sSf | sh
+curl https://sh.rustup.rs -sSf | sh -s -- -y
 
 ## pyenv
-curl https://pyenv.run | bash
+#curl https://pyenv.run | bash
 
 ## oh-my-zsh
 # sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
