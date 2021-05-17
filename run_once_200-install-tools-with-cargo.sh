@@ -1,2 +1,6 @@
 #!/bin/sh
-cargo install broot
+cargo install \
+  bandwhich \
+  broot \
+  du-dust \
+  sd
