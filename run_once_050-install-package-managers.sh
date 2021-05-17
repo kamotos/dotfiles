@@ -22,3 +22,10 @@ sh <(curl -L https://nixos.org/nix/install)
 
 # nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+
+# Vim plugins
+VUNDLE_PATH=~/.vim/bundle/Vundle.vim
+if ! stat $VUNDLE_PATH > /dev/null;
+then
+  git clone https://github.com/VundleVim/Vundle.vim.git $VUNDLE_PATH
+fi

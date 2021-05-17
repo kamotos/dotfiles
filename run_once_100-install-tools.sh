@@ -38,5 +38,5 @@ then
 fi
 
 curl -o /tmp/rescuetime_current_amd64.deb https://www.rescuetime.com/installers/rescuetime_current_amd64.deb
-$SUDO dpkg -i /tmp/rescuetime_current_amd64.deb || echo "Installing rescuetime failed"
+$SUDO dpkg -i /tmp/rescuetime_current_amd64.deb || apt --fix-broken install -y || echo "Installing rescuetime failed"
 
