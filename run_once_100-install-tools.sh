@@ -16,11 +16,12 @@ chmod +x $BIN_FOLDER/ydiff
 
 ## Install with nix-env
 . "$HOME/.nix-profile/etc/profile.d/nix.sh"
-nix-env -i direnv
-nix-env -i fd # https://github.com/sharkdp/fd
 nix-env -i bottom # btm
-nix-env -i procs # ps
+nix-env -i direnv
 nix-env -i exa # ls alternative
+nix-env -i fd # https://github.com/sharkdp/fd
+nix-env -i neofetch
+nix-env -i procs # ps
 
 # dep packages
 SUDO=""
