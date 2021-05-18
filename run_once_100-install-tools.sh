@@ -32,6 +32,7 @@ nix-env -i exa # ls alternative
 nix-env -i fd # https://github.com/sharkdp/fd
 nix-env -i neofetch
 nix-env -i procs # ps
+nix-env -iA nixpkgs.fzf
 
 # dep packages
 SUDO=""
