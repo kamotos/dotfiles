@@ -13,7 +13,7 @@ url=https://golang.org/dl/${GOLANG_LATEST_VERSION}.darwin-amd64.pkg
 
 curl -L -o /tmp/golang-installer.pkg $url
 
-sudo mv /usr/local/go /usr/local/${GOLANG_LATEST_VERSION}
+sudo mv /usr/local/go /usr/local/${INSTALLED_VERSION}
 
 open /tmp/golang-installer.pkg
 
