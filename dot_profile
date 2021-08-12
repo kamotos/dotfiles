@@ -30,10 +30,10 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH=$PATH:/usr/local/go/bin:$HOME/tools/GoLand-2020.3/bin:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.serverless/bin:$HOME/.local/bin:$PYENV_ROOT/bin
 
 # cargo
-source "$HOME/.cargo/env"
+. "$HOME/.cargo/env"
 
 # nix
 if [ -e /root/.nix-profile/etc/profile.d/nix.sh ]; then . /root/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 # pyenv
-eval "$(pyenv init --path)"
+_evalcache pyenv init --path
