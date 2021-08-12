@@ -5,6 +5,7 @@
 cargo install \
   bandwhich \
   broot \
+  choose \
   sd \
   tokei \
   watchexec-cli
