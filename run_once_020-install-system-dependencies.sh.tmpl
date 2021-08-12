@@ -1,16 +1,24 @@
 #!/bin/sh
 
-OS_DEPENDENCIES="zsh libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl git python3-dev sqlite3 libsqlite3-dev pulseaudio-utils xbacklight build-essential"
-
-{{ if (and (eq .chezmoi.os "linux") (ge .chezmoi.osRelease.versionID "18.04")) }}
-OS_DEPENDENCIES="${OS_DEPENDENCIES} ripgrep fzf i3lock-fancy flameshot"
-{{ end }}
-
+OS_DEPENDENCIES="htop zsh wget curl llvm sqlite3"
 SUDO=""
+
+{{ if (eq .chezmoi.os "linux") }}
+INSTALLER="apt install -y"
+
 if type sudo
 then
     SUDO="sudo"
 fi
 
+OS_DEPENDENCIES="${OS_DEPENDENCIES} libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl sqlite3 libsqlite3-dev pulseaudio-utils xbacklight build-essential xz-utils git tmux"
+{{    if (ge .chezmoi.osRelease.versionID "18.04") }}
+OS_DEPENDENCIES="${OS_DEPENDENCIES} ripgrep fzf i3lock-fancy flameshot"
+{{    end }}
+
+{{ else if (eq .chezmoi.os "darwin") }}
+INSTALLER="brew install"
+{{ end }}
+
 # sudo isn't necessary available in a docker image build
-$SUDO apt install -y $OS_DEPENDENCIES
+$SUDO $INSTALLER $OS_DEPENDENCIES
