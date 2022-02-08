@@ -1,0 +1,55 @@
+#!/bin/bash
+
+set -x
+
+#fonts
+TTF_FONTS_FOLDER=~/.local/share/fonts/ttf/
+mkdir -p $TTF_FONTS_FOLDER
+curl -L -o $TTF_FONTS_FOLDER/vscode.ttf https://github.com/Canop/broot/raw/master/resources/icons/vscode/vscode.ttf
+
+# tools
+BIN_FOLDER=~/.local/bin
+mkdir -p $BIN_FOLDER 
+
+# pip packages
+pip install \
+  grip # Markdown preview
+
+## ydiff
+curl -ksSL https://raw.github.com/ymattw/ydiff/master/ydiff.py > $BIN_FOLDER/ydiff
+chmod +x $BIN_FOLDER/ydiff
+
+# shell prompt
+curl https://starship.rs/install.sh -sSf | sh -s -- -y
+
+# dep packages
+SUDO=""
+if type sudo
+then
+    SUDO="sudo"
+fi
+
+# rescuetime
+{{ if (eq .chezmoi.os "linux") }}
+curl -o /tmp/rescuetime_current_amd64.deb https://www.rescuetime.com/installers/rescuetime_current_amd64.deb
+$SUDO dpkg -i /tmp/rescuetime_current_amd64.deb || apt --fix-broken install -y || echo "Installing rescuetime failed"
+{{ end }}
+
+
+# k8s
+KUBECTL_PATH=~/.local/bin/kubectl
+curl  -o $KUBECTL_PATH -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/{{ .chezmoi.os }} /{{ .chezmoi.arch }}/kubectl"
+chmod +x $KUBECTL_PATH
+
+
+git clone --depth 1 git://github.com/scmbreeze/scm_breeze.git ~/.scm_breeze
+~/.scm_breeze/install.sh
+
+
+{{ if (eq .chezmoi.os "darwin") }}
+# Mac specific things. 
+# In order to make the installation OS agnostic, only things that can't be installed using other installers should be installed using brew.
+brew bundle
+{{ end }}
+
+go get -u github.com/tomnomnom/gron
