@@ -2,6 +2,7 @@ set nocompatible              " be iMproved, required
 set number
 set relativenumber
 set statusline+=%{FugitiveStatusline()}
+set incsearch
 
 filetype off                  " required
 syntax enable
@@ -20,6 +21,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 Plugin 'airblade/vim-gitgutter'
+Plugin 'derekwyatt/vim-scala'
 Plugin 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
