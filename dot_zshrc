@@ -1,3 +1,5 @@
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
 export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:$HOME/.jenv/bin:$PATH
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -139,3 +141,8 @@ alias b="br"
 _evalcache direnv hook zsh
 _evalcache jenv init -
 _evalcache saml2aws --completion-script-zsh
+
+[ -s "/Users/anas/.scm_breeze/scm_breeze.sh" ] && source "/Users/anas/.scm_breeze/scm_breeze.sh"
+
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
