@@ -128,6 +128,8 @@ alias yd=ydiff
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
 
+export GPG_TTY=$(tty)
+
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
