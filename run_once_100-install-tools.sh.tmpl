@@ -32,17 +32,17 @@ fi
 # rescuetime
 {{ if (eq .chezmoi.os "linux") }}
 curl -o /tmp/rescuetime_current_amd64.deb https://www.rescuetime.com/installers/rescuetime_current_amd64.deb
-$SUDO dpkg -i /tmp/rescuetime_current_amd64.deb || apt --fix-broken install -y || echo "Installing rescuetime failed"
+$SUDO dpkg -i /tmp/rescuetime_current_amd64.deb || sudo apt --fix-broken install -y || echo "Installing rescuetime failed"
 {{ end }}
 
 
 # k8s
 KUBECTL_PATH=~/.local/bin/kubectl
-curl  -o $KUBECTL_PATH -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/{{ .chezmoi.os }} /{{ .chezmoi.arch }}/kubectl"
+curl  -o $KUBECTL_PATH -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/{{ .chezmoi.os }}/{{ .chezmoi.arch }}/kubectl"
 chmod +x $KUBECTL_PATH
 
 
-git clone --depth 1 git://github.com/scmbreeze/scm_breeze.git ~/.scm_breeze
+git clone --depth 1 https://github.com/scmbreeze/scm_breeze.git ~/.scm_breeze
 ~/.scm_breeze/install.sh
 
 
@@ -53,3 +53,12 @@ brew bundle
 {{ end }}
 
 go get -u github.com/tomnomnom/gron
+
+
+# Installing wkhtmltopdf (needed by jsonresume)
+curl -L -o /tmp/wkhtmltox.deb https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.$(lsb_release -cs)_amd64.deb
+sudo apt install /tmp/wkhtmltox.deb 
+
+
+# protobuf tools
+go install github.com/bufbuild/buf/cmd/buf@v1.7.0
