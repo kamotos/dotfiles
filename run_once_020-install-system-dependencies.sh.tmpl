@@ -11,9 +11,9 @@ then
     SUDO="sudo"
 fi
 
-OS_DEPENDENCIES="${OS_DEPENDENCIES} libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev sqlite3 libsqlite3-dev pulseaudio-utils xbacklight build-essential xz-utils git tmux"
+OS_DEPENDENCIES="${OS_DEPENDENCIES} i3 jq libssl-dev zlib1g-dev libbz2-dev libegl1-mesa-dev libfreetype6-dev libfontconfig1-dev libreadline-dev libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev libsqlite3-dev libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev sqlite3 libsqlite3-dev pulseaudio-utils xbacklight build-essential xz-utils git tmux"
 {{    if (ge .chezmoi.osRelease.versionID "18.04") }}
-OS_DEPENDENCIES="${OS_DEPENDENCIES} ripgrep fzf i3lock-fancy flameshot"
+OS_DEPENDENCIES="${OS_DEPENDENCIES} ripgrep fzf i3 i3lock-fancy flameshot"
 {{    end }}
 
 {{ else if (eq .chezmoi.os "darwin") }}
