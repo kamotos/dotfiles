@@ -5,7 +5,7 @@ set -x
 #fonts
 TTF_FONTS_FOLDER=~/.local/share/fonts/ttf/
 mkdir -p $TTF_FONTS_FOLDER
-curl -L -o $TTF_FONTS_FOLDER/vscode.ttf https://github.com/Canop/broot/raw/master/resources/icons/vscode/vscode.ttf
+ls $TTF_FONTS_FOLDER/vscode.ttf || curl -L -o $TTF_FONTS_FOLDER/vscode.ttf https://github.com/Canop/broot/raw/master/resources/icons/vscode/vscode.ttf
 
 # tools
 BIN_FOLDER=~/.local/bin
@@ -13,10 +13,12 @@ mkdir -p $BIN_FOLDER
 
 # pip packages
 pip install \
-  grip # Markdown preview
+  # Markdown preview
+  grip \ 
+  autorandr
 
 ## ydiff
-curl -ksSL https://raw.github.com/ymattw/ydiff/master/ydiff.py > $BIN_FOLDER/ydiff
+which ydiff || curl -ksSL https://raw.github.com/ymattw/ydiff/master/ydiff.py > $BIN_FOLDER/ydiff
 chmod +x $BIN_FOLDER/ydiff
 
 # shell prompt
@@ -38,7 +40,7 @@ $SUDO dpkg -i /tmp/rescuetime_current_amd64.deb || sudo apt --fix-broken install
 
 # k8s
 KUBECTL_PATH=~/.local/bin/kubectl
-curl  -o $KUBECTL_PATH -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/{{ .chezmoi.os }}/{{ .chezmoi.arch }}/kubectl"
+kubectl || curl  -o $KUBECTL_PATH -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/{{ .chezmoi.os }}/{{ .chezmoi.arch }}/kubectl"
 chmod +x $KUBECTL_PATH
 
 
@@ -88,10 +90,15 @@ chmod u+x ~/.local/bin/saml2aws
 hash -r
 saml2aws --version
 
-# INstall Nerd font
+# Install Nerd font
 mkdir ~/.fonts
 curl --output /tmp/fonts.zip -L https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/Hack.zip
 
 unzip /tmp/fonts.zip -d ~/.fonts/ 
 fc-cache -fv
+
+# Docker
+curl -fsSL https://get.docker.com -o get-docker.sh
+$SUDO sh get-docker.sh
 {{ end }}
+
