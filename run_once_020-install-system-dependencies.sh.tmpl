@@ -1,4 +1,5 @@
 #!/bin/sh
+set -x 
 
 OS_DEPENDENCIES="htop zsh wget curl llvm sqlite3"
 SUDO=""
@@ -33,10 +34,10 @@ i3 jq libssl-dev zlib1g-dev libbz2-dev libegl1-mesa-dev libfreetype6-dev libfont
 OS_DEPENDENCIES="${OS_DEPENDENCIES} ripgrep rofi fzf i3 i3lock-fancy flameshot pavucontrol"
 {{    end }}
 
+{{ else if (eq .chezmoi.os "darwin") }}
 # install brew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-{{ else if (eq .chezmoi.os "darwin") }}
 INSTALLER="brew install"
 {{ end }}
 

@@ -2,7 +2,7 @@
 set -euxo pipefail
 
 INSTALLED_VERSION=$(go env GOVERSION || echo "")
-GOLANG_LATEST_VERSION=$(curl https://go.dev/VERSION?m=text)
+GOLANG_LATEST_VERSION=$(curl https://go.dev/VERSION?m=text | head -n 1)
 
 if [ "$INSTALLED_VERSION" = "$GOLANG_LATEST_VERSION" ] 
 then
