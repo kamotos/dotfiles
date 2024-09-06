@@ -3,6 +3,7 @@ tap "hashicorp/tap"
 tap "homebrew/cask-fonts"
 tap "incu6us/homebrew-tap"
 
+brew "adr-tools"
 brew "buf"
 brew "gh"
 brew "git"
