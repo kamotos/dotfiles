@@ -16,7 +16,7 @@ then
 fi
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-	url=https://golang.org/dl/${GOLANG_LATEST_VERSION}.darwin-amd64.pkg
+	url=https://golang.org/dl/${GOLANG_LATEST_VERSION}.darwin-$(uname -m).pkg
 	curl -L -o /tmp/golang-installer.pkg $url
 	open /tmp/golang-installer.pkg
 else 	
