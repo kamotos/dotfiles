@@ -67,7 +67,7 @@ ZSH_THEME="bira"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(evalcache git aws sudo zsh-autosuggestions docker docker-compose)
+plugins=(evalcache git poetry aws sudo zsh-autosuggestions docker docker-compose zsh-nvm)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -119,8 +119,8 @@ export AWS_ACCESS_KEY_ID=
 export AWS_SECRET_ACCESS_KEY=
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/zsh_completion" ] && \. "$NVM_DIR/zsh_completion"  # This loads nvm bash_completion
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/zsh_completion" ] && \. "$NVM_DIR/zsh_completion"  # This loads nvm bash_completion
 
 
 export YDIFF_OPTIONS="-s -w 0 --wrap"
@@ -141,6 +141,9 @@ alias b="br"
 _evalcache direnv hook zsh
 _evalcache jenv init -
 _evalcache saml2aws --completion-script-zsh
+_evalcache pyenv init --path
+_evalcache pyenv init -
+_evalcache pyenv virtualenv-init -
 
 [ -s "/Users/anas/.scm_breeze/scm_breeze.sh" ] && source "/Users/anas/.scm_breeze/scm_breeze.sh"
 

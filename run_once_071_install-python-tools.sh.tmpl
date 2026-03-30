@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+set -x
+
+# pipx
+{{ if eq .chezmoi.os "darwin" }}
+
+brew install pipx
+pipx ensurepath
+
+{{ else if eq .chezmoi.os "linux" }}
+
+pyenv install $(pyenv latest 3) --skip-existing
+pyenv activate $(pyenv latest 3)
+
+python3 -m pip install --user pipx
+python3 -m pipx ensurepath
+
+{{ end }}
+
+# poetry
+pipx install poetry
