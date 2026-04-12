@@ -1,0 +1,45 @@
+[user]
+name = {{ .gitconfig.name | default "Your Name" }}
+email = {{ .gitconfig.email | default "your.email@example.com" }}
+
+[core]
+editor = vim
+autocrlf = input
+excludesfile = ~/.gitignore_global
+
+[init]
+defaultBranch = main
+
+[pull]
+rebase = false
+
+[push]
+default = current
+autoSetupRemote = true
+
+[alias]
+co = checkout
+br = branch
+ci = commit
+st = status
+unstage = reset HEAD --
+last = log -1 HEAD
+visual = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+
+[color]
+ui = auto
+
+[fetch]
+prune = true
+
+[rebase]
+autosquash = true
+autostash = true
+
+[diff]
+algorithm = histogram
+colorMoved = default
+
+[help]
+autocorrect = prompt
