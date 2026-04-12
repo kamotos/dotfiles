@@ -10,7 +10,7 @@ nix-env -i direnv
 nix-env -i du-dust
 nix-env -i exa # ls alternative
 nix-env -i fd # https://github.com/sharkdp/fd
-nix-env -i neofetch
+nix-env -i fastfetch
 nix-env -iA nixpkgs.dive
 nix-env -iA nixpkgs.fzf
 nix-env -iA nixpkgs.gitAndTools.delta
