@@ -1,0 +1,19 @@
+# Environment and secrets
+.env
+.env.*
+*.local
+
+# Local machine-specific files
+.local/
+
+# Private chezmoi files
+private_*
+
+# Editor files
+.DS_Store
+*.swp
+*~
+
+# Build artifacts
+*.o
+*.so
