@@ -2,6 +2,7 @@ tap "bufbuild/buf"
 tap "hashicorp/tap"
 tap "homebrew/cask-fonts"
 tap "incu6us/homebrew-tap"
+tap "manaflow-ai/cmux"
 
 brew "anomalyco/tap/opencode"
 brew "adr-tools"
@@ -30,3 +31,5 @@ brew "yubikey-personalization"
 cask 'amethyst'
 
 cask 'font-hack-nerd-font'
+
+cask 'cmux'
