@@ -35,5 +35,4 @@ export PATH=$PATH:/usr/local/go/bin:$HOME/tools/GoLand-2020.3/bin:$HOME/go/bin:$
 # nix
 if [ -e /root/.nix-profile/etc/profile.d/nix.sh ]; then . /root/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
-# pyenv
-_evalcache pyenv init --path
+
